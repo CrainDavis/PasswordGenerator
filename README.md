@@ -2,5 +2,5 @@
 ## Project Description:
 
 ## URLS:
-* Deployed Application: --
-* GitHub Repository: --
+* deployed application: https://craindavis.github.io/PasswordGenerator/
+* GitHub Repository: https://github.com/CrainDavis/PasswordGenerator
