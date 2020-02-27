@@ -20,7 +20,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// clicking "Generate Password" button will lead to prompts/confrims asking for user to input their desired password length and character parameters:
+// clicking "Generate Password" button will lead to prompts/confrims asking for user to input their desired character parameters and password length:
 function generatePassword() {
   // asking for user input of password character criteria:
   alert("What character type(s) will your password have?\n(lower or upper case letters, numbers, and/or special characters)");
@@ -31,21 +31,24 @@ function generatePassword() {
 
   var userChoices = lettersLower + lettersUpper + numbers + specialChars;
 
+  // assures that user selects at least one character type
   if (userChoices === 0) {
     return alert("You need to select at least ONE character type.")
   }
 
+  // asking user to input their desired password length:
   var passwordLength = parseInt(
     prompt("How long will the password be?\nChoose a number that is at least 8 and no more than 128.")
   );
 
-  while (
+  if (
     passwordLength < 8 ||
     passwordLength > 128 ||
     typeof passwordLength != "number" ||
     passwordLength === NaN ||
     passwordLength === null
   ) {
+    // if user picks a number not between 8-128, enters something other than a number, leaves the field blank, or cancels
     alert("Cannot generate password.");
 
     var passwordLength = parseInt(
@@ -85,8 +88,8 @@ function generatePassword() {
   }
   
   // returning the new password to the user via input box
-  const finalPassword = generatePassword.slice(0, passwordLength);
-  return finalPassword;
+  const password = generatePassword.slice(0, passwordLength);
+  return password;
 }
 
 // Generator Functions -- randomly selected from character sets seen below)
