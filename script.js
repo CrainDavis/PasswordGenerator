@@ -30,6 +30,7 @@ function writePassword() {
     return alert("password cannot be generated.");
   }
   else if (passwordLength > 7 && passwordLength < 129)  {
+    // alert telling the user their input password length:
     alert("Password Length: " + passwordLength + " characters");
     console.log("Password Length: " + passwordLength + " characters");
     console.log("--------------");
@@ -37,11 +38,12 @@ function writePassword() {
 
   // character parameters (lower case letters, upper case letters, numbers, and/or special characters)
   alert("Please select the type(s) of characters you want your password to have.\nYou must select at least one type.");
-  var lettersLower = confirm("Will your password contain lower case letters?");
-  var lettersUpper = confirm("Will your password contain upper case letters?");
-  var numbers = confirm("Will your password contain numbers?");
-  var specialChars = confirm("Will your password contain special characters?");
-
+  var lettersLower = confirm("Will your password contain lower case letters?\n(abcdefghijklmnopqrstuvwxyz)");
+  var lettersUpper = confirm("Will your password contain upper case letters?\n(ABCDEFGHIJKLMNOPQRSTUVWXYZ)");
+  var numbers = confirm("Will your password contain numbers?\n(0123456789)");
+  var specialChars = confirm("Will your password contain special characters?\n(!@#$%^&*()-_=+,./<>?[]{}`~)");
+  // alert telling the user their character choices:
+  alert("Lower case letters: " + lettersLower + "\nUpper case letters: " + lettersUpper + "\nNumbers: " + numbers + "\nSpecial characters: " + specialChars);
   console.log("Lower case letters: " + lettersLower);
   console.log("Upper case letters: " + lettersUpper);
   console.log("Numbers: " + numbers);
@@ -70,7 +72,8 @@ function writePassword() {
       generatePassword += randomFunction[funcName]();
     });
   }
-  alert(generatePassword);
+  // alert telling the user their generated password:
+  alert("Here is your new password: \n" + generatePassword);
   const finalPassword = generatePassword.slice(0, length);
   return finalPassword;
 }
