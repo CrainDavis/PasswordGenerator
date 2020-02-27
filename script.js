@@ -81,6 +81,7 @@ function generatePassword() {
       generatePassword += randomFunction[funcName]();
     });
   }
+  
   // returning the new password to the user via input box
   const finalPassword = generatePassword.slice(0, passwordLength);
   return finalPassword;
