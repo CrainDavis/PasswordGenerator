@@ -21,29 +21,38 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 // clicking "Generate Password" button will lead to prompts/confrims asking for user to input their desired password length and character parameters:
-function writePassword() {
+function generatePassword() {
   // user chooses the length of their password
   var passwordLength = parseInt(
-    prompt("How long do you want your password to be?\nYour password must be at least 8 characters, and no more than 128.")
+    prompt("How long do you want your password to be?\nPassword must be at least 8 characters, and no more than 128.")
   );
-  if(passwordLength < 8 || passwordLength > 128 || typeof passwordLength != "number" || passwordLength === NaN || passwordLength === null) {
-    return alert("password cannot be generated.");
+  if (passwordLength < 8 || passwordLength > 128) {
+    return alert("Password cannot be generated.\nNumber must be between 8 and 128.");
+  }
+  else if (typeof passwordLength != "number" || passwordLength === NaN || passwordLength === null) {
+    return alert("Please choose a NUMBER!")
   }
   else if (passwordLength > 7 && passwordLength < 129)  {
-    // alert telling the user their input password length:
-    alert("Password Length: " + passwordLength + " characters");
+    alert("OK!");
     console.log("Password Length: " + passwordLength + " characters");
     console.log("--------------");
   }
 
   // character parameters (lower case letters, upper case letters, numbers, and/or special characters)
-  alert("Please select the type(s) of characters you want your password to have.\nYou must select at least one type.");
+  alert("Select the type(s) of characters you want in the password\n(lower & upper case letters, numbers, and/or special characters).\nYou must select at least one type.");
   var lettersLower = confirm("Will your password contain lower case letters?\n(abcdefghijklmnopqrstuvwxyz)");
   var lettersUpper = confirm("Will your password contain upper case letters?\n(ABCDEFGHIJKLMNOPQRSTUVWXYZ)");
   var numbers = confirm("Will your password contain numbers?\n(0123456789)");
   var specialChars = confirm("Will your password contain special characters?\n(!@#$%^&*()-_=+,./<>?[]{}`~)");
-  // alert telling the user their character choices:
-  alert("Lower case letters: " + lettersLower + "\nUpper case letters: " + lettersUpper + "\nNumbers: " + numbers + "\nSpecial characters: " + specialChars);
+  
+  // alert telling the user their length & character choices:
+  alert("Password length: " + passwordLength + " characters" +
+  "\n--------------" +
+  "\nLower case letters: " + lettersLower + 
+  "\nUpper case letters: " + lettersUpper + 
+  "\nNumbers: " + numbers + 
+  "\nSpecial characters: " + specialChars);
+  // logging the user's chosen password criteria into the console:
   console.log("Lower case letters: " + lettersLower);
   console.log("Upper case letters: " + lettersUpper);
   console.log("Numbers: " + numbers);
@@ -72,9 +81,8 @@ function writePassword() {
       generatePassword += randomFunction[funcName]();
     });
   }
-  // alert telling the user their generated password:
-  alert("Here is your new password: \n" + generatePassword);
-  const finalPassword = generatePassword.slice(0, length);
+  // returning the new password to the user via input box
+  const finalPassword = generatePassword.slice(0, passwordLength);
   return finalPassword;
 }
 
