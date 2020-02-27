@@ -23,11 +23,11 @@ generateBtn.addEventListener("click", writePassword);
 // clicking "Generate Password" button will lead to prompts/confrims asking for user to input their desired password length and character parameters:
 function generatePassword() {
   // asking for user input of password character criteria:
-  alert("Select what kind of character types you want");
-  var lettersLower = confirm("Do you want lower case letters?");
-  var lettersUpper = confirm("Do you want upper case letters?");
-  var numbers = confirm("Do you want numbers?");
-  var specialChars = confirm("Do you want special characters?");
+  alert("What character type(s) will your password have?\n(lower or upper case letters, numbers, and/or special characters)");
+  var lettersLower = confirm("Do you want lower case letters?\n(abcdefghijklmnopqrstuvwxyz)");
+  var lettersUpper = confirm("Do you want upper case letters?\n(ABCDEFGHIJKLMNOPQRSTUVWXYZ)");
+  var numbers = confirm("Do you want numbers?\n(0123456789)");
+  var specialChars = confirm("Do you want special characters?\n(!@#$%^&*()-_=+,./<>?[]{}`~)");
 
   var userChoices = lettersLower + lettersUpper + numbers + specialChars;
 
@@ -36,7 +36,7 @@ function generatePassword() {
   }
 
   var passwordLength = parseInt(
-    prompt("Input a password length. It must be between 8 and 128.")
+    prompt("How long will the password be?\nChoose a number that is at least 8 and no more than 128.")
   );
 
   while (
@@ -46,12 +46,26 @@ function generatePassword() {
     passwordLength === NaN ||
     passwordLength === null
   ) {
-    alert("Your password must be at least 8, and no more than 128.");
+    alert("Cannot generate password.");
 
     var passwordLength = parseInt(
       prompt("Select length of password, between 8 and 128.")
     );
   }
+
+  // alert telling the user their length & character choices:
+  alert("Password length: " + passwordLength + " characters" +
+  "\n--------------" +
+  "\nLower case letters: " + lettersLower + 
+  "\nUpper case letters: " + lettersUpper + 
+  "\nNumbers: " + numbers + 
+  "\nSpecial characters: " + specialChars);
+  // logging the user's chosen password criteria into the console:
+  console.log("Lower case letters: " + lettersLower);
+  console.log("Upper case letters: " + lettersUpper);
+  console.log("Numbers: " + numbers);
+  console.log("Special characters: " + specialChars);
+  console.log("--------------");
   
   // Create password:
   var generatePassword = "";
