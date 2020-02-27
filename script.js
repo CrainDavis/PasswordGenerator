@@ -106,6 +106,6 @@ function getRandomNumber() {
   return numbers[Math.floor(Math.random() * numbers.length)];
 }
 function getRandomSymbol() {
-  const specialChars = "!@#$%^&*()-_=+,./<>?[]{}`~"
+  const specialChars = "!@#$%^&*()-_=+,./<>?[]{}~"
   return specialChars[Math.floor(Math.random() * specialChars.length)];
 }
