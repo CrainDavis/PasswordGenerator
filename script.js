@@ -34,23 +34,32 @@ function generatePassword() {
   var specialChars = confirm("Do you want special characters?\n( !@#$%^&*()-_=+,./<>?[]{}`~ )");
   // Create a variable to store the user selections . . .
   var userChoices = lettersLower + lettersUpper + numbers + specialChars;
+  console.log("number of true user choices: " + userChoices);
+  console.log("--------------");
   // ensures that user selects at least one character type:
   if (userChoices === 0) {
     return alert("You need to select at least ONE character type.")
   }
+  console.log("Lower case letters: " + lettersLower);
+  console.log("Upper case letters: " + lettersUpper);
+  console.log("Numbers: " + numbers);
+  console.log("Special characters: " + specialChars);
+  console.log("--------------");
 
   // prompt user for password length, store in variable (passwordLength):
   var passwordLength = parseInt(
     prompt("How long will the password be?\nChoose a number that is at least 8 and no more than 128.")
   );
   // establish requirements for password length, and re-prompts if input does not match requirements:
-  while (
-    passwordLength < 8 || passwordLength > 128 || typeof passwordLength != "number" || passwordLength === NaN || passwordLength === null) {
+  while (passwordLength < 8 || passwordLength > 128) {
     alert("Cannot generate password.");
     var passwordLength = parseInt(
-      prompt("Select length of password, between 8 and 128.")
+      prompt("Your password must be between 8 and 128 characters!")
     );
   }
+  console.log("Password length: " + passwordLength + " characters");
+  console.log("--------------");
+
   // alert telling the user their length & character choices:
   if (passwordLength > 7 && passwordLength < 129) {
     alert(
@@ -74,14 +83,17 @@ function generatePassword() {
       generatedPassword += randomFunction[funcName]();
     });
   }
+  console.log("User's new password " + generatedPassword);
+
   // returning the new password to the user via input box
-  const password = generatedPassword.slice(0, passwordLength);
+  const password = generatedPassword.slice(0, passwordLength); 
+  // slice ensures that the generated password has the user's chosen length rather than creating one with a length divisible by the number of generator functions used
   return password;
 }
 
 /////////////////////////////////////////////////////////////////////////
 
-// GENERATOR FUNCTIONS:
+// GENERATOR FUNCTIONS -- character randomizer:
 function getRandomLower() {
   const lettersLower = "abcdefghijklmnopqrstuvwxyz"
   return lettersLower[Math.floor(Math.random() * lettersLower.length)];
