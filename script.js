@@ -1,12 +1,5 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate"); 
-
-var randomFunction = {
-  lettersLower : getRandomLower,
-  lettersUpper : getRandomUpper,
-  numbers : getRandomNumber,
-  specialChars : getRandomSymbol
-};
+var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
@@ -14,83 +7,81 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  
+
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// clicking "Generate Password" button will lead to prompts/confrims asking for user to input their desired character parameters and password length:
+/////////////////////////////////////////////////////////////////////////
+
+// object with generator functions:
+var randomFunction = {
+  lettersLower : getRandomLower,
+  lettersUpper : getRandomUpper,
+  numbers : getRandomNumber,
+  specialChars : getRandomSymbol
+};
+
+// clicking "Generate Password" button => PASSWORD CRITERIA SELECTION & GENERATES PASSWORD:
 function generatePassword() {
-  // asking for user input of password character criteria:
+  // PASSWORD CRITERIA SELECTION:
+  // user selects their password character type criteria:
   alert("What character type(s) will your password have?\n(lower or upper case letters, numbers, and/or special characters)");
-  var lettersLower = confirm("Do you want lower case letters?\n(abcdefghijklmnopqrstuvwxyz)");
-  var lettersUpper = confirm("Do you want upper case letters?\n(ABCDEFGHIJKLMNOPQRSTUVWXYZ)");
-  var numbers = confirm("Do you want numbers?\n(0123456789)");
-  var specialChars = confirm("Do you want special characters?\n(!@#$%^&*()-_=+,./<>?[]{}`~)");
-
+  var lettersLower = confirm("Do you want lower case letters?\n( abcdefghijklmnopqrstuvwxyz )");
+  var lettersUpper = confirm("Do you want upper case letters?\n( ABCDEFGHIJKLMNOPQRSTUVWXYZ )");
+  var numbers = confirm("Do you want numbers?\n( 0123456789 )");
+  var specialChars = confirm("Do you want special characters?\n( !@#$%^&*()-_=+,./<>?[]{}`~ )");
+  // Create a variable to store the user selections . . .
   var userChoices = lettersLower + lettersUpper + numbers + specialChars;
-
-  // assures that user selects at least one character type
+  // ensures that user selects at least one character type:
   if (userChoices === 0) {
     return alert("You need to select at least ONE character type.")
   }
 
-  // asking user to input their desired password length:
+  // prompt user for password length, store in variable (passwordLength):
   var passwordLength = parseInt(
     prompt("How long will the password be?\nChoose a number that is at least 8 and no more than 128.")
   );
-
-  if (
-    passwordLength < 8 ||
-    passwordLength > 128 ||
-    typeof passwordLength != "number" ||
-    passwordLength === NaN ||
-    passwordLength === null
-  ) {
-    // if user picks a number not between 8-128, enters something other than a number, leaves the field blank, or cancels
+  // establish requirements for password length, and re-prompts if input does not match requirements:
+  while (
+    passwordLength < 8 || passwordLength > 128 || typeof passwordLength != "number" || passwordLength === NaN || passwordLength === null) {
     alert("Cannot generate password.");
-
     var passwordLength = parseInt(
       prompt("Select length of password, between 8 and 128.")
     );
   }
-
   // alert telling the user their length & character choices:
-  alert("Password length: " + passwordLength + " characters" +
-  "\n--------------" +
-  "\nLower case letters: " + lettersLower + 
-  "\nUpper case letters: " + lettersUpper + 
-  "\nNumbers: " + numbers + 
-  "\nSpecial characters: " + specialChars);
-  // logging the user's chosen password criteria into the console:
-  console.log("Lower case letters: " + lettersLower);
-  console.log("Upper case letters: " + lettersUpper);
-  console.log("Numbers: " + numbers);
-  console.log("Special characters: " + specialChars);
-  console.log("--------------");
-  
-  // Create password:
+  if (passwordLength > 7 && passwordLength < 129) {
+    alert(
+    "Lower case letters: " + lettersLower + 
+    "\nUpper case letters: " + lettersUpper + 
+    "\nNumbers: " + numbers + 
+    "\nSpecial characters: " + specialChars +
+    "\n--------------" +
+    "\nPassword length: " + passwordLength + " characters"
+    );
+  }
+
+  // PASSWORD CREATION:
   var generatedPassword = "";
-
-  // create an object that will contain all the character type choices; filtered out by user's choices
+  // create an array that will contain all the character type choices; filters out false values
   var charTypesArray = [ {lettersLower}, {lettersUpper}, {numbers}, {specialChars}] .filter(item => Object.values(item)[0]);
-
-  // for loop that creates the randomized password by first looping through the user's character choices (in the order seen in the charTypesArray)
-  // the for loop, for each index of the password, then uses the corresponding generator function to randomly pick a character
+  // for loop to generate the password
   for (let i = 0; i < passwordLength; i += userChoices) {
     charTypesArray.forEach(type => {
       var funcName = Object.keys(type)[0];
       generatedPassword += randomFunction[funcName]();
     });
   }
-  
   // returning the new password to the user via input box
   const password = generatedPassword.slice(0, passwordLength);
   return password;
 }
 
-// Generator Functions -- once character type is determined, a character corresponding to the type is randomly selected)
+/////////////////////////////////////////////////////////////////////////
+
+// GENERATOR FUNCTIONS:
 function getRandomLower() {
   const lettersLower = "abcdefghijklmnopqrstuvwxyz"
   return lettersLower[Math.floor(Math.random() * lettersLower.length)];
