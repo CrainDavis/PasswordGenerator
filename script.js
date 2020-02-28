@@ -71,28 +71,26 @@ function generatePassword() {
   console.log("--------------");
   
   // Create password:
-  var generatePassword = "";
+  var generatedPassword = "";
 
-  var charTypesArray = [
-    {lettersLower},
-    {lettersUpper},
-    {numbers},
-    {specialChars}
-  ] .filter(item => Object.values(item)[0]);
+  // create an object that will contain all the character type choices; filtered out by user's choices
+  var charTypesArray = [ {lettersLower}, {lettersUpper}, {numbers}, {specialChars}] .filter(item => Object.values(item)[0]);
 
+  // for loop that creates the randomized password by first looping through the user's character choices (in the order seen in the charTypesArray)
+  // the for loop, for each index of the password, then uses the corresponding generator function to randomly pick a character
   for (let i = 0; i < passwordLength; i += userChoices) {
     charTypesArray.forEach(type => {
       var funcName = Object.keys(type)[0];
-      generatePassword += randomFunction[funcName]();
+      generatedPassword += randomFunction[funcName]();
     });
   }
   
   // returning the new password to the user via input box
-  const password = generatePassword.slice(0, passwordLength);
+  const password = generatedPassword.slice(0, passwordLength);
   return password;
 }
 
-// Generator Functions -- randomly selected from character sets seen below)
+// Generator Functions -- once character type is determined, a character corresponding to the type is randomly selected)
 function getRandomLower() {
   const lettersLower = "abcdefghijklmnopqrstuvwxyz"
   return lettersLower[Math.floor(Math.random() * lettersLower.length)];
