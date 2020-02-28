@@ -7,7 +7,7 @@ bT1(aA6@yS2<
 wX2aY2zV
 6,8[0%0{3%
 vH6vL7qS9sK9lN5jL4rC6oO7q
-kY1-kE9)fG0^cS9=fE5[fB3}oJ8?uK5-hB9=oE5]nP9$mH4[bE1-kL5#aI8)uH9$oA7$eG6?aV0,oZ2=cR1-lD6?
+kY1-kE9)fG0^cS9=fE5[fB3}oJ8?uK5-hB9=oE5]nP9$mH4[bE1-kL5#aI8)uH9$oA7$eG6?aV0,oZ2=cR1-lD6?fN2-kB8]rW4=
 ```
 ## What does this program do?
 * Upon clicking the "Generate Password" button, the user will first be alerted with a message instructing them to next choose yes/no to the four character types (choices to be made in the subsequent four confirms):
