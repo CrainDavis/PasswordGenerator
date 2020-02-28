@@ -1,7 +1,8 @@
 # PasswordGenerator
+-------------------------------------------------------------------------------------------------------
 ## Project Description:
 This is a random password generator that will incorporate the user's choices of character type and password length to generate a randomized password. 
-------------------------------------------------------------------------------------
+## What does this program do?
 * Upon clicking the "Generate Password" button, the user will first be alerted with a message instructing them to next choose yes/no to the four character types (choices to be made in the subsequent four confirms):
     * lower case letters `abcdefghijklmnopqrstuvwxyz`
     * upper case letters `ABCDEFGHIJKLMNOPQRSTUVWXYZ`
