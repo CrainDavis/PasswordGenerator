@@ -13,7 +13,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // object with generator functions:
 var randomFunction = {
@@ -50,13 +50,14 @@ function generatePassword() {
   var passwordLength = parseInt(
     prompt("How long will the password be?\nChoose a number that is at least 8 and no more than 128.")
   );
-  // establish requirements for password length, and re-prompts if input does not match requirements:
+  // establish requirements for password length, and re-prompts if input does not match range requirement:
   while (passwordLength < 8 || passwordLength > 128) {
     alert("Cannot generate password.");
     var passwordLength = parseInt(
-      prompt("Your password must be between 8 and 128 characters!")
+      prompt("Enter a number between 8 and 128 characters.")
     );
   }
+
   console.log("Password length: " + passwordLength + " characters");
   console.log("--------------");
 
@@ -91,8 +92,6 @@ function generatePassword() {
   return password;
 }
 
-/////////////////////////////////////////////////////////////////////////
-
 // GENERATOR FUNCTIONS -- character randomizer:
 function getRandomLower() {
   const lettersLower = "abcdefghijklmnopqrstuvwxyz"
@@ -110,3 +109,5 @@ function getRandomSymbol() {
   const specialChars = "!@#$%^&*()-_=+,./<>?[]{}~"
   return specialChars[Math.floor(Math.random() * specialChars.length)];
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
