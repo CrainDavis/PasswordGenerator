@@ -23,6 +23,8 @@ var randomFunction = {
   specialChars : getRandomSymbol
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // clicking "Generate Password" button => PASSWORD CRITERIA SELECTION & GENERATES PASSWORD:
 function generatePassword() {
   // PASSWORD CRITERIA SELECTION:
@@ -65,20 +67,9 @@ function generatePassword() {
       return alert("OK");
     }
   }
+
   console.log("Password length: " + passwordLength + " characters");
   console.log("--------------");
-
-  // alert telling the user their length & character choices:
-  if (passwordLength > 7 && passwordLength < 129) {
-    alert(
-    "Lower case letters: " + lettersLower + 
-    "\nUpper case letters: " + lettersUpper + 
-    "\nNumbers: " + numbers + 
-    "\nSpecial characters: " + specialChars +
-    "\n--------------" +
-    "\nPassword length: " + passwordLength + " characters"
-    );
-  }
 
   // PASSWORD CREATION:
   var generatedPassword = "";
@@ -92,12 +83,15 @@ function generatePassword() {
     });
   }
   console.log("User's new password " + generatedPassword);
+  console.log("--------------");
 
   // returning the new password to the user via input box
   const password = generatedPassword.slice(0, passwordLength); 
   // slice ensures that the generated password has the user's chosen length rather than creating one with a length divisible by the number of generator functions used
   return password;
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // GENERATOR FUNCTIONS -- character randomizer:
 function getRandomLower() {
