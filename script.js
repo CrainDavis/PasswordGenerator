@@ -29,7 +29,7 @@ var randomFunction = {
 function generatePassword() {
   // PASSWORD CRITERIA SELECTION:
   // user selects their password character type criteria:
-  alert("What character type(s) will your password have?\n(lower or upper case letters, numbers, and/or special characters)");
+  alert("Select which character type(s) your password should have:\n(lower or upper case letters, numbers, and/or special characters).");
   var lettersLower = confirm("Do you want lower case letters?\n( abcdefghijklmnopqrstuvwxyz )");
   var lettersUpper = confirm("Do you want upper case letters?\n( ABCDEFGHIJKLMNOPQRSTUVWXYZ )");
   var numbers = confirm("Do you want numbers?\n( 0123456789 )");
@@ -54,7 +54,7 @@ function generatePassword() {
     alert("ERROR");
   }
   else if (passwordLength === null) {
-    return alert("OK");
+    return alert("Canceled");
   }
   // establish requirements for password length, and re-prompts if input does not match range requirement, or if the user leaves in input space blank:
   while (passwordLength < 8 || passwordLength > 128) {
@@ -64,7 +64,7 @@ function generatePassword() {
       alert("ERROR");
     }
     else if (passwordLength === null) {
-      return alert("OK");
+      return alert("Canceled.");
     }
   }
 
