@@ -55,16 +55,12 @@ function generatePassword() {
     return;
   }
 
-  // establish requirements for password length, and re-prompts if input does not match range requirement:
-  while (passwordLength < 8 || passwordLength > 128) {
-    alert("Input a number between 8 and 128.");
+  // establish requirements for password length, and re-prompts if input does not match range requirement or if input space is left blank:
+  while (passwordLength < 8 || passwordLength > 128 || passwordLength === "") {
+    alert("Please input a number between 8 and 128.");
     var passwordLength = prompt("How many characters will the password contain?\nPlease input a NUMBER (8-128).");
-    // or if the user leaves in input space blank:
-    if (passwordLength === "") {
-      alert("ERROR");
-    }
     // if user clicks "cancel"
-    else if (passwordLength === null) {
+    if (passwordLength === null) {
       return;
     }
   }
