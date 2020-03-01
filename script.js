@@ -49,20 +49,21 @@ function generatePassword() {
   console.log("--------------");
 
   // prompt user for password length, store in variable (passwordLength):
-  var passwordLength = prompt("How long will the password be?");
-  if (passwordLength === "") {
-    alert("ERROR");
-  }
-  else if (passwordLength === null) {
+  var passwordLength = prompt("How many characters will the password contain?\nPlease input a NUMBER.");
+  // if user clicks "cancel"
+  if (passwordLength === null) {
     return alert("Canceled");
   }
-  // establish requirements for password length, and re-prompts if input does not match range requirement, or if the user leaves in input space blank:
+
+  // establish requirements for password length, and re-prompts if input does not match range requirement:
   while (passwordLength < 8 || passwordLength > 128) {
     alert("Input a number between 8 and 128.");
     var passwordLength = prompt("How long will the password be?\nChoose a number that is at least 8 and no more than 128.");
+    // or if the user leaves in input space blank:
     if (passwordLength === "") {
       alert("ERROR");
     }
+    // if user clicks "cancel"
     else if (passwordLength === null) {
       return alert("Canceled.");
     }
