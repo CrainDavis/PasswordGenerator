@@ -49,7 +49,7 @@ function generatePassword() {
   console.log("--------------");
 
   // prompt user for password length, store in variable (passwordLength):
-  var passwordLength = prompt("How many characters will the password contain?\nPlease input a NUMBER.");
+  var passwordLength = prompt("How many characters will the password contain?\nPlease input a NUMBER (8-128).");
   // if user clicks "cancel"
   if (passwordLength === null) {
     return alert("Canceled");
