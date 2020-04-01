@@ -22,7 +22,7 @@ This program requires generated passwords to have a minimum length of 8 characte
 Users are allowed to choose just one type of character, choose a combination, or choose all four to include in their randomized passwords. The user will decide their password criteria by answering a series of prompts that pop up on the page.
 
 ## Application Image:
-![application gif](images/PasswordGenerator.gif)
+![application gif](images/PassGen.gif)
 
 ## URLs:
 * deployed application: https://craindavis.github.io/PasswordGenerator/
